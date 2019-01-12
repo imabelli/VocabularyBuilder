@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Create two equal columns that floats next to each other */
+  .column {
+    width: 48%;
+    padding: 10px;
+    margin: 10px;
+  }
+  
+.row {
+    height: 100px;
+    margin: 10px;
+    background-color: cyan;
+    display: flex;
+}
+
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .droppable {
+    width: 350px;
+    height: 70px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+  }

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <link rel="stylesheet" href="drag-drop.css">
+  <link rel="stylesheet" href="tab.css">
+  <link rel="stylesheet" href="dictionary.css">
+  <link rel="stylesheet" href="button.css">
+  <script src="drag-drop.js"></script>
+  <script src="tab.js"></script>
+  <script src="submitQuiz.js"></script>
+</head>
+
+<body>
+
+  <div class="tab">
+    <button class="tablinks" id="defaultOpen" onclick="refreshAndOpenTab(event, 'MatchDefinition')">Learn</button>
+    <button class="tablinks" onclick="openTab(event, 'Quiz')">Quiz</button>
+    <button class="tablinks" onclick="openTab(event, 'EditDictionary')">Edit Dictionary</button>
+  </div>
+
+  <div id="MatchDefinition" class="tabcontent" style="border: none;">
+    <div>
+      <h3>Learn</h3>
+      <p>Drag word to appropriate definition.</p>
+    </div>
+    <div id="panel" style="display: flex;">
+      <div id="column1" class="column">
+
+      </div>
+      <div id="column2" class="column">
+
+      </div>
+    </div>
+  </div>
+
+  <div id="Quiz" class="tabcontent" style="border: none">
+    <div>
+      <h3>Quiz</h3>
+      <p>Check accuracy of matching</p>
+    </div>
+    <div id="quizPanel" style = "display: flex;">
+      <div id="quizColumn1" class="column">
+        <div class="row" ondragover="allowDrop(event)" ondreop="dropWordColIfEmpty(event)">
+          <span draggable="true" ondragstart="drag(event)" style="margin: auto;" id="qz-good">good</span>
+        </div>
+        <div class="row" ondragover="allowDrop(event)" ondrop="dropWordColIfEmpty(event)">
+          <span draggable="true" ondragstart="drag(event)" style="margin: auto;" id="qz-beautiful">beautiful</span>
+        </div>
+      </div>
+      <div id="quizColumn2" class="column">
+        <div class="row" word="good" ondrop="dropAlwaysQuiz(event)" ondragover="allowDrop(event)">
+          <span style="margin: auto;">not bad</span>
+        </div>
+        <div class="row" word="beautiful" ondrop="dropAlwaysQuiz(event)" ondragover="allowDrop(event)">
+          <span style="margin: auto;">pretty</span>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex;"><button class="button button1" style = "margin: auto;" onclick = "submitQuiz(event)">Submit</button></div>
+  </div>
+
+  <div id="EditDictionary" class="tabcontent" style="border: none; display: flex;">
+    <h3>Edit Dictionary</h3>
+    <p>Add or update words you wish to learn.</p>
+    <div id="EditDictionaryTable"></div>
+  </div>
+
+</body>
+<script src="drag-drop-end.js"></script>
+<script src="dictionary.js"></script>
+<script>
+  document.getElementById("defaultOpen").click();
+</script>
+
+</html>
